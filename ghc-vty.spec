@@ -7,15 +7,14 @@
 %bcond_with tests
 
 Name:           ghc-%{pkg_name}
-Version:        5.21
-Release:        2%{?dist}
+Version:        5.25.1
+Release:        1%{?dist}
 Summary:        A simple terminal UI library
 
 License:        BSD
 Url:            https://hackage.haskell.org/package/%{pkg_name}
 # Begin cabal-rpm sources:
 Source0:        https://hackage.haskell.org/package/%{pkgver}/%{pkgver}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{pkgver}/%{pkg_name}.cabal#/%{pkgver}.cabal
 # End cabal-rpm sources
 
 # Begin cabal-rpm deps:
@@ -107,7 +106,6 @@ This package provides the Haskell %{pkg_name} profiling library.
 %prep
 # Begin cabal-rpm setup:
 %setup -q -n %{pkgver}
-cp -bp %{SOURCE1} %{pkg_name}.cabal
 # End cabal-rpm setup
 
 
@@ -150,6 +148,9 @@ cp -bp %{SOURCE1} %{pkg_name}.cabal
 
 
 %changelog
+* Thu Jul 25 2019 Jens Petersen <petersen@redhat.com> - 5.25.1-1
+- update to 5.25.1
+
 * Thu Jul 25 2019 Fedora Release Engineering <releng@fedoraproject.org> - 5.21-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_31_Mass_Rebuild
 
