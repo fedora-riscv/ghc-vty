@@ -20,6 +20,12 @@ Source1:        https://hackage.haskell.org/package/%{pkgver}/%{pkg_name}.cabal#
 
 # Begin cabal-rpm deps:
 BuildRequires:  ghc-Cabal-devel
+%if %{with haddock}
+BuildRequires:  ghc-doc
+%endif
+%if %{with ghc_prof}
+BuildRequires:  ghc-prof
+%endif
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-blaze-builder-devel
 BuildRequires:  ghc-bytestring-devel
@@ -70,16 +76,32 @@ the library.
 %package devel
 Summary:        Haskell %{pkg_name} library development files
 Provides:       %{name}-static = %{version}-%{release}
-Provides:       %{name}-doc = %{version}-%{release}
 %if %{defined ghc_version}
 Requires:       ghc-compiler = %{ghc_version}
-Requires(post): ghc-compiler = %{ghc_version}
-Requires(postun): ghc-compiler = %{ghc_version}
 %endif
 Requires:       %{name}%{?_isa} = %{version}-%{release}
 
 %description devel
 This package provides the Haskell %{pkg_name} library development files.
+
+
+%if %{with haddock}
+%package doc
+Summary:        Haskell %{pkg_name} library documentation
+
+%description doc
+This package provides the Haskell %{pkg_name} library documentation.
+%endif
+
+
+%if %{with ghc_prof}
+%package prof
+Summary:        Haskell %{pkg_name} profiling library
+Requires:       %{name}-devel%{?_isa} = %{version}-%{release}
+
+%description prof
+This package provides the Haskell %{pkg_name} profiling library.
+%endif
 
 
 %prep
@@ -105,14 +127,6 @@ cp -bp %{SOURCE1} %{pkg_name}.cabal
 %cabal_test
 
 
-%post devel
-%ghc_pkg_recache
-
-
-%postun devel
-%ghc_pkg_recache
-
-
 %files -f %{name}.files
 # Begin cabal-rpm files:
 %license LICENSE
@@ -123,6 +137,16 @@ cp -bp %{SOURCE1} %{pkg_name}.cabal
 %doc AUTHORS CHANGELOG.md README.md
 %{_bindir}/vty-demo
 %{_bindir}/vty-mode-demo
+
+
+%if %{with haddock}
+%files doc -f %{name}-doc.files
+%endif
+
+
+%if %{with ghc_prof}
+%files prof -f %{name}-prof.files
+%endif
 
 
 %changelog
