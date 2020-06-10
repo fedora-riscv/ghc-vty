@@ -5,8 +5,8 @@
 %global pkgver %{pkg_name}-%{version}
 
 Name:           ghc-%{pkg_name}
-Version:        5.25.1
-Release:        3%{?dist}
+Version:        5.26
+Release:        1%{?dist}
 Summary:        A simple terminal UI library
 
 License:        BSD
@@ -140,6 +140,9 @@ This package provides the Haskell %{pkg_name} profiling library.
 
 
 %changelog
+* Wed Jun 10 2020 Jens Petersen <petersen@redhat.com> - 5.26-1
+- update to 5.26
+
 * Wed Feb 19 2020 Jens Petersen <petersen@redhat.com> - 5.25.1-3
 - refresh to cabal-rpm-2.0.2
 
