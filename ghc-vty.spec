@@ -7,7 +7,7 @@
 # testsuite missing deps: quickcheck-assertions test-framework test-framework-smallcheck test-framework-hunit
 
 Name:           ghc-%{pkg_name}
-Version:        5.26
+Version:        5.28.2
 Release:        1%{?dist}
 Summary:        A simple terminal UI library
 
@@ -20,7 +20,9 @@ Source0:        https://hackage.haskell.org/package/%{pkgver}/%{pkgver}.tar.gz
 # Begin cabal-rpm deps:
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-rpm-macros
+BuildRequires:  ghc-ansi-terminal-prof
 BuildRequires:  ghc-base-prof
+BuildRequires:  ghc-binary-prof
 BuildRequires:  ghc-blaze-builder-prof
 BuildRequires:  ghc-bytestring-prof
 BuildRequires:  ghc-containers-prof
@@ -116,6 +118,7 @@ This package provides the Haskell %{pkg_name} profiling library.
 
 %files devel -f %{name}-devel.files
 %doc AUTHORS CHANGELOG.md README.md
+%{_bindir}/vty-build-width-table
 %{_bindir}/vty-demo
 %{_bindir}/vty-mode-demo
 
@@ -132,6 +135,9 @@ This package provides the Haskell %{pkg_name} profiling library.
 
 
 %changelog
+* Fri Jun 19 2020 Jens Petersen <petersen@redhat.com> - 5.28.2-1
+- update to 5.28.2
+
 * Wed Jun 10 2020 Jens Petersen <petersen@redhat.com> - 5.26-1
 - update to 5.26
 
