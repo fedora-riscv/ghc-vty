@@ -8,7 +8,7 @@
 
 Name:           ghc-%{pkg_name}
 Version:        5.28.2
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        A simple terminal UI library
 
 License:        BSD
@@ -135,6 +135,9 @@ This package provides the Haskell %{pkg_name} profiling library.
 
 
 %changelog
+* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 5.28.2-4
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
 * Sat Aug 01 2020 Fedora Release Engineering <releng@fedoraproject.org> - 5.28.2-3
 - Second attempt - Rebuilt for
   https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
