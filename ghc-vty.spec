@@ -7,7 +7,7 @@
 # testsuite missing deps: quickcheck-assertions test-framework test-framework-smallcheck test-framework-hunit
 
 Name:           ghc-%{pkg_name}
-Version:        5.32
+Version:        5.33
 Release:        1%{?dist}
 Summary:        A simple terminal UI library
 
@@ -15,9 +15,11 @@ License:        BSD
 Url:            https://hackage.haskell.org/package/%{pkg_name}
 # Begin cabal-rpm sources:
 Source0:        https://hackage.haskell.org/package/%{pkgver}/%{pkgver}.tar.gz
+Source1:        https://hackage.haskell.org/package/%{pkgver}/%{pkg_name}.cabal#/%{pkgver}.cabal
 # End cabal-rpm sources
 
 # Begin cabal-rpm deps:
+BuildRequires:  dos2unix
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-ansi-terminal-prof
@@ -96,6 +98,7 @@ This package provides the Haskell %{pkg_name} profiling library.
 %prep
 # Begin cabal-rpm setup:
 %setup -q -n %{pkgver}
+dos2unix -k -n %{SOURCE1} %{pkg_name}.cabal
 # End cabal-rpm setup
 
 
@@ -136,6 +139,9 @@ This package provides the Haskell %{pkg_name} profiling library.
 
 
 %changelog
+* Thu Aug  5 2021 Jens Petersen <petersen@redhat.com> - 5.33-1
+- update to 5.33
+
 * Thu Aug  5 2021 Jens Petersen <petersen@redhat.com> - 5.32-1
 - update to 5.32
 
