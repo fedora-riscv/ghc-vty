@@ -8,7 +8,7 @@
 
 Name:           ghc-%{pkg_name}
 Version:        5.33
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        A simple terminal UI library
 
 License:        BSD
@@ -139,6 +139,9 @@ dos2unix -k -n %{SOURCE1} %{pkg_name}.cabal
 
 
 %changelog
+* Sat Jan 08 2022 Miro Hrončok <mhroncok@redhat.com> - 5.33-2
+- Rebuilt for https://fedoraproject.org/wiki/Changes/LIBFFI34
+
 * Thu Aug  5 2021 Jens Petersen <petersen@redhat.com> - 5.33-1
 - update to 5.33
 
